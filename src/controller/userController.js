@@ -96,8 +96,42 @@ const adicionarUsuario = async (req, res) => {
     }
 };
 
+const gerarToken = require("../middleware/jwt");
+
+const login = async (req, res) => {
+
+    const { email, senha } = req.body;
+
+    const [usuarios] = await pool.query(
+        "SELECT * FROM users WHERE email = ?",
+        [email]
+    );
+
+    if (usuarios.length == 0) {
+        return res.status(401).json({
+            mensagem: "Usuário não encontrado"
+        });
+    }
+
+    const usuario = usuarios[0];
+
+    if (usuario.senha != senha) {
+        return res.status(401).json({
+            mensagem: "Senha incorreta"
+        });
+    }
+
+    const token = gerarToken(usuario);
+
+    return res.json({
+        token
+    });
+
+}
+
 module.exports = {
     ListarUsuarios,
     BuscarUsuarioPorId,
-    adicionarUsuario
+    adicionarUsuario,
+    login
 };
