@@ -1,3 +1,7 @@
+CREATE DATABASE gerenciamento_usuarios;
+
+USE gerenciamento_usuarios;
+
 CREATE TABLE permissoes (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
