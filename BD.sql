@@ -40,3 +40,6 @@ CREATE TABLE users (
         REFERENCES users(id)
 
 );
+
+INSERT INTO users (nome, email, senha, permissao_id, admin_id) VALUES
+('Fulaninho Admin', 'fulaninho@etec.com', '567', 1, NULL);
