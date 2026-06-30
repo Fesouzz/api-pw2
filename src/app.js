@@ -4,7 +4,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 const userRoutes = require("./routes/userRoutes.js");
 const pool = require("./config/pool.js");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3006;
 
 
 app.use(express.json());
