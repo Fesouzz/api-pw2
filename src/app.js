@@ -1,11 +1,13 @@
 const express = require("express");
-const userRoutes = require("./src/routes/userRoutes");
-const path = require("path");const pool = require("./src/config/pool");
-require("dotenv").config({ path: path.resolve(__dirname, ".env")});
-const app = express();const PORT = process.env.PORT || 3000;
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
+const userRoutes = require("./routes/userRoutes.js");
+const pool = require("./config/pool.js");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 
 app.use(express.json());
-// Rota inicial documentando os Endpoints solicitados
 app.get("/", (req, res) => {
   res.json({
     mensagem: "API de Gerenciamento de Usuários",
